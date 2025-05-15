@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jueces</title>
+   <!--  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="index.ts" rel="tye">
+    
+    <style>
+    body {
+      background-color: #7D82D3;  
+      width: 100%;
+    }
+    .cuerpo{
+      background-color: #E5E6F6 ;
+    }
+    .titulo {     
+      color: white;
+    }
+    .cuadrito{
+      background-color: #d60081;
+    }
+    .subtitulo {
+      color: #d60081;
+      font-weight: bold;
+    }
+    .caja-numero input {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      border-color: #d60081;
+    }
+    .columna {
+      border: 1px solid #ccc;
+      padding: 10px;
+      min-height: 500px;
+      background-color: #7D82D3;
+    }
+    .nombre-candidato {
+      border-bottom: 1px solid #ddd;
+      padding: 4px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid mt-2">
+    <div class="text-center titulo p-3">
+        <h5>PROCESO ELECTORAL EXTRAORDINARIO 2024-2025</h5>
+        <h4>MINISTRAS Y MINISTROS DE LA SUPREMA CORTE DE JUSTICIA DE LA NACIÓN</h4>
+    </div>
+    <div class="w-100 p-lg-2">
+      <div class="row g-3 mb-1 px-4 py-1 d-flex justify-content-between cuerpo">
+        <div class="col-lg-10 ">
+           <div class="d-inline-flex">
+              <label class="align-items-start fw-bold">ENTIDAD FEDERATIVA</label>
+              <input type="text" class="form-control form-control-lg" />
+            </div>  
+        </div>
+        <div class="col-lg-2">
+          <div class="d-inline-flex">
+            <label class="align-items-start fs-6 fw-bold">DISTRITO ELECTORAL</label>
+            <input type="text" class="form-control form-control-sm" />
+          </div>     
+        </div>
+        <p class="text-center subtitulo">Seleccione las candidaturas de su preferencia</p>
+        
+        <div class="container-fluid d-flex d-inline-block mb-4">  
+            <!-- Columna Mujeres -->
+            <div class="col-md-5 columna">
+                <h6 class="text-center text-uppercase text-white">Escriba el número correspondiente a cinco mujeres</h6>
+                <div class="d-flex justify-content-center gap-2 caja-numero mb-3">
+                  <input type="text" maxlength="2" class="border-3 rounded-3">
+                  <input type="text" maxlength="2" class="border-3 rounded-3">
+                  <input type="text" maxlength="2" class="border-3 rounded-3">
+                  <input type="text" maxlength="2" class="border-3 rounded-3">
+                  <input type="text" maxlength="2" class="border-3 rounded-3">
+                </div>
+                <!-- Lista mujeres -->
+                <div class=" container" >
+                  <div class="d-flex m-2">      
+                    <div class="row-cols-auto" id="csvContainer1">
+                      
+                    </div>
+                    <div class="row-cols-auto" id="csvContainer2">
+
+                    </div>
+                  </div> 
+                </div>
+                
+                <!-- ... Continúa hasta 48 -->
+              </div>
+
+            <div class=" w-25 text-start border-5 border-danger">
+              <div class="text-start mx-4 px-3">
+                <h4 class="cuadrito text-white text-sm-center">PROPUESTA</h4>
+                <p ><span class="subtitulo"> PE</span> PODER EJECUTIVO</p>
+                <p ><span class="subtitulo"> PL</span> PODER LEGISLATIVO</p>
+                <p ><span class="subtitulo"> PJ</span> PODER JUDICIAL</p>
+                <p ><span class="subtitulo"> EF</span> MINISTROS Y MINISTRAS EN FUNCIONES</p>
+              </div>            
+            </div>
+            <!-- Columna HOMBRES -->
+            <div class="col-md-5 columna">
+                <h6 class="text-center text-uppercase text-white">Escriba el número correspondiente a cuatro hombres</h6>
+                <div class="d-flex justify-content-center gap-2 caja-numero mb-3">
+                  <input type="text" maxlength="2" class="border-3 rounded-3">
+                  <input type="text" maxlength="2" class="border-3 rounded-3">
+                  <input type="text" maxlength="2" class="border-3 rounded-3">
+                  <input type="text" maxlength="2" class="border-3 rounded-3">
+                </div>
+                <!-- Lista HOMBRES -->
+                <div class=" container ">
+                  <div class="d-flex m-2">       
+                    <div class="row-cols-auto" id="csvContainerHombres1">
+
+                    </div>
+                    <div class="row-cols-auto" id="csvContainerHombres2">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+    </div> 
+  </div>
+  <div class="mt-4 text-center">
+      <small class="text-muted">Diseño simulado para fines de desarrollo web</small>
+      </div>
+  </div>
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles de la persona</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Contenido generado dinámicamente -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js" defer></script>
+
+</body>
