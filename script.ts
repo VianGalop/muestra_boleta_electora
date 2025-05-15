@@ -40,24 +40,59 @@ function renderData(data: any[]) {
 function renderBlock(data: any[], containerId: string, startIndex: number) {
   const container = document.getElementById(containerId)!;
   container.innerHTML = `
-      <div class="d-flex px-1 w-auto">
-        <span class="row-col-1 text-white" id="${containerId}-col-nro"></span>
-        <span class="row-col-1 subtitulo mx-1" id="${containerId}-col-propuesto"></span>
-        <span class="row-col-6 bg-white text-uppercase" id="${containerId}-col-nombre"></span>
+    <div class="d-flex px-1 w-auto nombre-candidato">
+      <div class="row-col-1">
+        <span class="text-white" id="${containerId}-col-nro"></span>
       </div>
+      <div class="row-col-1 mx-1">
+        <span class="subtitulo" id="${containerId}-col-propuesto"></span>
+      </div>
+      <div class="row-col-6 bg-white ">
+          <span class="text-uppercase" id="${containerId}-col-nombre"></span>
+      </div>
+    </div> 
   `;
   const colNro = document.getElementById(`${containerId}-col-nro`)!;
-  const colOcupacion = document.getElementById(`${containerId}-col-propuesto`)!;
+  const colPropuesto = document.getElementById(`${containerId}-col-propuesto`)!;
   const colNombre = document.getElementById(`${containerId}-col-nombre`)!;
+  
 
   data.forEach((row, index) => {
     colNro.innerHTML += `<p>${startIndex + index}</p>`;
-    colOcupacion.innerHTML += `<p class="bg-white">${row["Propuesto"]}</p>`;
+    colPropuesto.innerHTML += `<p class="bg-white">${row["Propuesto"]}</p>`;
     colNombre.innerHTML += `<p> <a href="#" class="text-primary" onclick='openModal(${JSON.stringify(row)})'>
       ${row["Nombre completo"]}
     </a></p>`;
   });
 }
+
+function filtrarNombresGlobal(filtro: string): void {
+  const nombres = document.querySelectorAll('.nombre-candidato div p');
+  let hayCoincidencias = false;
+
+  nombres.forEach(nombreElem => {
+    const texto = nombreElem.textContent?.toLowerCase() || '';
+    const coincide = texto.includes(filtro.toLowerCase());
+    (nombreElem as HTMLElement).style.display = coincide ? '' : 'none';
+    if (coincide) hayCoincidencias = true;
+  });
+
+  // Mostrar/ocultar mensaje si no hay coincidencias
+  const mensaje = document.getElementById('mensajeSinResultados');
+  if (mensaje) {
+    mensaje.classList.toggle('d-none', hayCoincidencias);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Agregar evento al buscador
+  const input = document.getElementById('buscarGeneral') as HTMLInputElement;
+  input.addEventListener('input', () => {
+    filtrarNombresGlobal(input.value);
+  });
+});
+
 
 function openModal(data: any) {
   const modalBody = document.getElementById('modalBody')!;

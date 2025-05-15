@@ -35,16 +35,40 @@ function renderData(data) {
 }
 function renderBlock(data, containerId, startIndex) {
     var container = document.getElementById(containerId);
-    container.innerHTML = "\n      <div class=\"d-flex px-1 w-auto\">\n        <span class=\"row-col-1 text-white\" id=\"".concat(containerId, "-col-nro\"></span>\n        <span class=\"row-col-1 subtitulo mx-1\" id=\"").concat(containerId, "-col-propuesto\"></span>\n        <span class=\"row-col-6 bg-white text-uppercase\" id=\"").concat(containerId, "-col-nombre\"></span>\n      </div>\n  ");
+    container.innerHTML = "\n    <div class=\"d-flex px-1 w-auto nombre-candidato\">\n      <div class=\"row-col-1\">\n        <span class=\"text-white\" id=\"".concat(containerId, "-col-nro\"></span>\n      </div>\n      <div class=\"row-col-1 mx-1\">\n        <span class=\"subtitulo\" id=\"").concat(containerId, "-col-propuesto\"></span>\n      </div>\n      <div class=\"row-col-6 bg-white \">\n          <span class=\"text-uppercase\" id=\"").concat(containerId, "-col-nombre\"></span>\n      </div>\n    </div> \n  ");
     var colNro = document.getElementById("".concat(containerId, "-col-nro"));
-    var colOcupacion = document.getElementById("".concat(containerId, "-col-propuesto"));
+    var colPropuesto = document.getElementById("".concat(containerId, "-col-propuesto"));
     var colNombre = document.getElementById("".concat(containerId, "-col-nombre"));
     data.forEach(function (row, index) {
         colNro.innerHTML += "<p>".concat(startIndex + index, "</p>");
-        colOcupacion.innerHTML += "<p class=\"bg-white\">".concat(row["Propuesto"], "</p>");
+        colPropuesto.innerHTML += "<p class=\"bg-white\">".concat(row["Propuesto"], "</p>");
         colNombre.innerHTML += "<p> <a href=\"#\" class=\"text-primary\" onclick='openModal(".concat(JSON.stringify(row), ")'>\n      ").concat(row["Nombre completo"], "\n    </a></p>");
     });
 }
+function filtrarNombresGlobal(filtro) {
+    var nombres = document.querySelectorAll('.nombre-candidato div p');
+    var hayCoincidencias = false;
+    nombres.forEach(function (nombreElem) {
+        var _a;
+        var texto = ((_a = nombreElem.textContent) === null || _a === void 0 ? void 0 : _a.toLowerCase()) || '';
+        var coincide = texto.includes(filtro.toLowerCase());
+        nombreElem.style.display = coincide ? '' : 'none';
+        if (coincide)
+            hayCoincidencias = true;
+    });
+    // Mostrar/ocultar mensaje si no hay coincidencias
+    var mensaje = document.getElementById('mensajeSinResultados');
+    if (mensaje) {
+        mensaje.classList.toggle('d-none', hayCoincidencias);
+    }
+}
+document.addEventListener('DOMContentLoaded', function () {
+    // Agregar evento al buscador
+    var input = document.getElementById('buscarGeneral');
+    input.addEventListener('input', function () {
+        filtrarNombresGlobal(input.value);
+    });
+});
 function openModal(data) {
     var modalBody = document.getElementById('modalBody');
     modalBody.innerHTML = "\n    <p><strong>Nombre:</strong> ".concat(data["Nombre completo"], "</p>\n    <p><strong>Edad:</strong> ").concat(data["Edad"], "</p>\n    <p><strong>Sexo:</strong> ").concat(data["Sexo"], "</p>\n    <p><strong>Ocupaci\u00F3n:</strong> ").concat(data["Ocupación"], "</p>\n    <p><strong>Nivel de estudios:</strong> ").concat(data["Nivel de estudios"] || 'N/A', "</p>\n  ");
