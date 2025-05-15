@@ -33,6 +33,9 @@
       text-align: center;
       border-color: #d60081;
     }
+    .border-propuestas{
+       border-color: #d60081;
+    }
     .columna {
       border: 1px solid #ccc;
       padding: 10px;
@@ -65,7 +68,7 @@
             <input type="text" class="form-control form-control-sm" />
           </div>     
         </div>
-        <p class="text-center subtitulo">Seleccione las candidaturas de su preferencia</p>
+        <p class="text-center subtitulo fs-2">Seleccione las candidaturas de su preferencia</p>
         
         <div class="container-fluid d-flex d-inline-block mb-4">  
             <!-- Columna Mujeres -->
@@ -93,13 +96,16 @@
                 <!-- ... Continúa hasta 48 -->
               </div>
 
-            <div class=" w-25 text-start border-5 border-danger">
-              <div class="text-start mx-4 px-3">
+            <div class=" w-15 text-start border-3 border-propuestas">
+              <div class="text-start mx-2 px-3">
                 <h4 class="cuadrito text-white text-sm-center">PROPUESTA</h4>
-                <p ><span class="subtitulo"> PE</span> PODER EJECUTIVO</p>
-                <p ><span class="subtitulo"> PL</span> PODER LEGISLATIVO</p>
-                <p ><span class="subtitulo"> PJ</span> PODER JUDICIAL</p>
-                <p ><span class="subtitulo"> EF</span> MINISTROS Y MINISTRAS EN FUNCIONES</p>
+                <div class="text-start px-4">
+                  <p ><span class="subtitulo"> PE</span> PODER EJECUTIVO</p>
+                  <p ><span class="subtitulo"> PL</span> PODER LEGISLATIVO</p>
+                  <p ><span class="subtitulo"> PJ</span> PODER JUDICIAL</p>
+                  <p ><span class="subtitulo"> EF</span> MINISTROS Y MINISTRAS EN FUNCIONES</p>
+                </div>
+                
               </div>            
             </div>
             <!-- Columna HOMBRES -->
@@ -110,6 +116,7 @@
                   <input type="text" maxlength="2" class="border-3 rounded-3">
                   <input type="text" maxlength="2" class="border-3 rounded-3">
                   <input type="text" maxlength="2" class="border-3 rounded-3">
+                  <input type="text" maxlength="2" class="visually-hidden border-3 rounded-3">
                 </div>
                 <!-- Lista HOMBRES -->
                 <div class=" container ">

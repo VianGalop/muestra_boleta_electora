@@ -35,7 +35,7 @@ function renderData(data) {
 }
 function renderBlock(data, containerId, startIndex) {
     var container = document.getElementById(containerId);
-    container.innerHTML = "\n      <div class=\"d-flex px-1\">\n        <span class=\"row-col-3 text-white\" id=\"".concat(containerId, "-col-nro\"></span>\n        <span class=\"row-col-1 subtitulo mx-3\" id=\"").concat(containerId, "-col-propuesto\"></span>\n        <span class=\"row-col-5 bg-white text-uppercase\" id=\"").concat(containerId, "-col-nombre\"></span>\n      </div>\n  ");
+    container.innerHTML = "\n      <div class=\"d-flex px-1 w-auto\">\n        <span class=\"row-col-1 text-white\" id=\"".concat(containerId, "-col-nro\"></span>\n        <span class=\"row-col-1 subtitulo mx-1\" id=\"").concat(containerId, "-col-propuesto\"></span>\n        <span class=\"row-col-6 bg-white text-uppercase\" id=\"").concat(containerId, "-col-nombre\"></span>\n      </div>\n  ");
     var colNro = document.getElementById("".concat(containerId, "-col-nro"));
     var colOcupacion = document.getElementById("".concat(containerId, "-col-propuesto"));
     var colNombre = document.getElementById("".concat(containerId, "-col-nombre"));

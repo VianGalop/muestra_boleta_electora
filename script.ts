@@ -40,10 +40,10 @@ function renderData(data: any[]) {
 function renderBlock(data: any[], containerId: string, startIndex: number) {
   const container = document.getElementById(containerId)!;
   container.innerHTML = `
-      <div class="d-flex px-1">
-        <span class="row-col-3 text-white" id="${containerId}-col-nro"></span>
-        <span class="row-col-1 subtitulo mx-3" id="${containerId}-col-propuesto"></span>
-        <span class="row-col-6 bg-white text-uppercase px-2" id="${containerId}-col-nombre"></span>
+      <div class="d-flex px-1 w-auto">
+        <span class="row-col-1 text-white" id="${containerId}-col-nro"></span>
+        <span class="row-col-1 subtitulo mx-1" id="${containerId}-col-propuesto"></span>
+        <span class="row-col-6 bg-white text-uppercase" id="${containerId}-col-nombre"></span>
       </div>
   `;
   const colNro = document.getElementById(`${containerId}-col-nro`)!;
